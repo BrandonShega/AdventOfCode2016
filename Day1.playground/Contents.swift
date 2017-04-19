@@ -28,30 +28,18 @@ func solution(input: String) -> Int {
       else { return 0 }
 
     switch (turn, currentDirection) {
-    case (.l, .north):
+    case (.l, .north), (.r, .south):
       x -= steps
       currentDirection = .west
-    case (.l, .south):
+    case (.l, .south), (.r, .north):
       x += steps
       currentDirection = .east
-    case (.l, .east):
+    case (.l, .east), (.r, .west):
       y += steps
       currentDirection = .north
-    case (.l, .west):
+    case (.l, .west), (.r, .east):
       y -= steps
       currentDirection = .south
-    case (.r, .north):
-      x += steps
-      currentDirection = .east
-    case (.r, .south):
-      x -= steps
-      currentDirection = .west
-    case (.r, .east):
-      y -= steps
-      currentDirection = .south
-    case (.r, .west):
-      y += steps
-      currentDirection = .north
     }
   }
   return abs(x) + abs(y)
